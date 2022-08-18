@@ -2,13 +2,53 @@
 const exp = require('express')
 const userApi = exp.Router();
 const jwt=require("jsonwebtoken")
-
 const expressErrorHandler = require("express-async-handler")
 const bcryptjs=require("bcryptjs")
 //body parsing middlleware
 userApi.use(exp.json())
 
 
+
+
+
+
+//adding new product
+
+userApi.post('/add-product', expressErrorHandler(async (req, res, next) => {
+
+
+
+    let productCollectionObject = req.app.get("productCollectionObject")
+
+    let newProduct = JSON.parse(req.body.prodObj);
+
+    //search
+    let product = await productCollectionObject.findOne({ model: newProduct.model })
+
+    //if proudct is existed
+    if (product !== null) {
+        res.send({ message: "Product already existed" })
+    }
+    else {
+       
+        await productCollectionObject.insertOne(newProduct)
+        res.send({ message: "New product added" })
+    }
+
+
+}))
+
+
+//to read all products
+userApi.get("/getproducts", expressErrorHandler(async (req, res, next) => {
+
+    let productCollectionObject = req.app.get("productCollectionObject")
+
+    let products = await productCollectionObject.find().toArray()
+
+    res.send({ message: products })
+
+}))
 
 
 
@@ -103,7 +143,7 @@ userApi.post('/login', expressErrorHandler(async (req, res) => {
 
     }
 
-}))
+}))  
 
 
 
@@ -116,5 +156,14 @@ userApi.post('/login', expressErrorHandler(async (req, res) => {
 
 
 
-//export
+
+
+
+
+
+
+
+
+
+
 module.exports = userApi;

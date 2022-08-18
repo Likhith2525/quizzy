@@ -16,6 +16,8 @@ import { SearchPipe } from './search.pipe';
 import { QuizComponent } from './quiz/quiz.component';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
 import { QuizdetailsComponent } from './quizdetails/quizdetails.component';
+import { MasterComponent } from './master/master.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { QuizdetailsComponent } from './quizdetails/quizdetails.component';
     SearchPipe,
     QuizComponent,
     CoursedetailsComponent,
-    QuizdetailsComponent
+    QuizdetailsComponent,
+    MasterComponent
   ],
   imports: [
     BrowserModule,

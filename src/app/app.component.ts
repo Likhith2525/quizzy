@@ -32,5 +32,7 @@ export class AppComponent {
   userLogout(){
     localStorage.clear();
     this.us.userLoginStatus=false;
+    this.us.masterLoginStatus=false;
+    
   }
 }

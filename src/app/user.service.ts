@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class UserService {
   userLoginStatus=false;
+  masterLoginStatus=false;
   dataSource=new BehaviorSubject<any>(0)
     dataObservable=this.dataSource.asObservable();
      updateDataObservable(data){
@@ -43,4 +44,20 @@ export class UserService {
     return this.hc.get(`/user/getproducts/${username}`)
   }
   
+  //to ad new product
+  addNewProduct(newProduct):Observable<any>{
+
+    console.log("new product",newProduct)
+    return  this.hc.post("/user/add-product",newProduct)
+    
+  }
+
+
+  //to read all products
+  getProducts():Observable<any>{
+
+      return this.hc.get('/user/getadminproducts')
+
+  }
+
 }
