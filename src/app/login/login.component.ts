@@ -50,20 +50,24 @@ export class LoginComponent implements OnInit {
       }
     )
   }
+ 
 
   uObj:User={username:"",password:"",dob:"",email:""};
+
+
   onSignup(){
-    let obj=this.uObj;
-    this.us.createUser(obj).subscribe(
+    
+    console.log(this.uObj)
+    this.us.createUser(this.uObj).subscribe(
       res=>{
-        if(res.message==="New user created successfully"){
+        if(res.message==="User created"){
           alert("User Created")
           //navigate to login component
-          this.router.navigateByUrl("/login")
+          this.router.navigateByUrl("/home")
 
         }
         else{
-          alert(res.message)
+          alert(res.message);
         }
     },
     err=>{

@@ -2,15 +2,16 @@
 const exp=require("express")
 const app=exp();
 const path=require("path")
-//import mongoclient
-const mc=require("mongodb").MongoClient;
 
 //connect angular app with express server
 app.use(exp.static(path.join(__dirname,"./dist/learningapp/")))
+//import mongoclient
+const mc=require("mongodb").MongoClient;
+
 
 //connection string
-const databaseurl="mongodb+srv://vnr2021:vnr2021@cluster0.m8rl3.mongodb.net/myfirstdb?retryWrites=true&w=majority"
-
+const databaseurl="mongodb+srv://vnr2023:vnr2023@mymongo1.v5zxf.mongodb.net/mprojectdb?retryWrites=true&w=majority"
+//const databaseurl=process.env.DATABASE_URL;
 //connect to db
 mc.connect(databaseurl,{useNewUrlParser:true, useUnifiedTopology:true},(err,client)=>{
     if(err){
@@ -18,22 +19,34 @@ mc.connect(databaseurl,{useNewUrlParser:true, useUnifiedTopology:true},(err,clie
     }
     else{
         //get database object from client object
-        let databaseObj=client.db("myfirstdb")
+        let databaseObj=client.db("mprojectdb")
         //create user collection object
-        let userCartCollectionObject = databaseObj.collection("cartcollection")
         let userCollectionObj=databaseObj.collection("usercollection")
+     
         app.set("userCollectionObj", userCollectionObj)
-        app.set("userCartCollectionObject", userCartCollectionObject)
-        console.log("connected to database successfully")
+
+      
     }
 })
 
 
+//connect angular app with express server
+app.use(exp.static(path.join(__dirname,"./dist/learningapp/")))
+
+
 //import APIs
-const userApi=require("./APIs/userApi")
+const userapi=require("./APIs/userapi")
 
 //execure specific api based on path
-app.use('/user',userApi)
+app.use('/user',userapi)
+
+app.get('*',(req,res) =>{
+    res.sendFile(path.join(__dirname,'dist/learningapp/index.html'), function(err){
+        if(err){
+            res.status(500).send(err)
+        }
+    })
+})
 
 //error handling middleware
 app.use((err,req,res,next)=>{
@@ -49,5 +62,5 @@ app.use((req,res,next)=>{
 
 
 //assign port
-const port=4000
+const port=3000;
 app.listen(port,()=>console.log(`server is listening on port ${port}`))
