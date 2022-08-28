@@ -11,12 +11,12 @@ import { UserService } from './user.service';
 import { HttpClientModule} from '@angular/common/http';
 import { CourseComponent } from './course/course.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
-import { LibraryComponent } from './library/library.component';
 import { SearchPipe } from './search.pipe';
 import { QuizComponent } from './quiz/quiz.component';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
 import { QuizdetailsComponent } from './quizdetails/quizdetails.component';
 import { MasterComponent } from './master/master.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 
 @NgModule({
@@ -28,12 +28,13 @@ import { MasterComponent } from './master/master.component';
     ContactusComponent,
     CourseComponent,
     UserprofileComponent,
-    LibraryComponent,
+  
     SearchPipe,
     QuizComponent,
     CoursedetailsComponent,
     QuizdetailsComponent,
-    MasterComponent
+    MasterComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,

@@ -22,8 +22,11 @@ mc.connect(databaseurl,{useNewUrlParser:true, useUnifiedTopology:true},(err,clie
         let databaseObj=client.db("mprojectdb")
         //create user collection object
         let userCollectionObj=databaseObj.collection("usercollection")
-     
+        let questionCollectionObj=databaseObj.collection("questioncollection")
+        let marksCollectionObj=databaseObj.collection("markscollection")
         app.set("userCollectionObj", userCollectionObj)
+        app.set("marksCollectionObj", marksCollectionObj)
+        app.set("questionCollectionObj", questionCollectionObj)
 
       
     }

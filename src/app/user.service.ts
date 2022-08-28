@@ -60,4 +60,17 @@ export class UserService {
 
   }
 
+  getqstionsbyname(sub):Observable<any>{
+    return this.hc.get(`/user/getquestions/${sub}`)
+  }
+   //to read all products
+   getsubjects():Observable<any>{
+
+    return this.hc.get('/user/getsubjects')
+
+}
+  updatescore(ans):Observable<any>{
+    return this.hc.post('/user/evaluateuser',ans)
+  }
+
 }

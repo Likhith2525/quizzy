@@ -1,23 +1,41 @@
 <form #ref="ngForm" (ngSubmit)="onAddProduct(ref.value)" class="w-75 mx-auto mt-5">
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="productname" placeholder="name@example.com" name="productname"
+        <input type="text" class="form-control" id="subname" placeholder="name@example.com" name="subname"
             ngModel>
-        <label for="username">Productname</label>
+        <label for="subname">Subject Name</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="model" placeholder="model" name="model" ngModel>
-        <label for="model">Model</label>
+        <input type="number" class="form-control" id="qno" placeholder="model" name="qno" ngModel>
+        <label for="qno">Question Number</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="number" class="form-control" id="price" placeholder="name@example.com" name="price" ngModel>
-        <label for="email">Price </label>
+        <input type="text" class="form-control" id="question" placeholder="model" name="question" ngModel>
+        <label for="question">Question</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="op1" placeholder="name@example.com" name="option1" ngModel>
+        <label for="op1">Option 1</label>
     </div>
     <div class="form-floating mb-3">
-        <textarea type="date" class="form-control" id="dob" placeholder="Email" name="description" ngModel></textarea>
-        <label for="dob">Description</label>
+        <input type="text" class="form-control" id="op2" placeholder="name@example.com" name="option2" ngModel>
+        <label for="op2">Option 2</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="op3" placeholder="name@example.com" name="option3" ngModel>
+        <label for="op3">Option 3</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="op4" placeholder="name@example.com" name="option4" ngModel>
+        <label for="op4">Option 4</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+        <textarea type="text" class="form-control" id="crt" placeholder="Email" name="correctoption" ngModel></textarea>
+        <label for="crt">Correct option</label>
     </div>
 
 
 
-    <button class="btn btn-success" type="submit">Add product</button>
+    <button class="btn btn-success" type="submit">Add Question</button>
 </form>

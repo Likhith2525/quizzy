@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {DataService} from 'src/app/newadmin/data.service'
 import { UserService } from 'src/app/user.service';
 
 @Component({
@@ -9,24 +9,18 @@ import { UserService } from 'src/app/user.service';
 })
 export class AddtestComponent implements OnInit {
 
-  constructor(private us:UserService) { }
+  constructor(private ds:DataService) { }
 
   ngOnInit(): void {
   }
   onAddProduct(prodObj:any){
 
-    console.log("prod obj",prodObj)
+    //console.log("prod obj",prodObj)
     
 
-    this.us.addNewProduct(prodObj).subscribe(
+    this.ds.addNewProduct(prodObj).subscribe(
       res=>{
-          if(res.message=='New product added'){
-            alert("New product added")
-            //navigate to view products 
-          }
-          else{
-            alert(res.message)
-          }
+       alert(res.message)
       },
       err=>{
         console.log("err in adding rpoduct",err)

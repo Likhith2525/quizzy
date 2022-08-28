@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
     let userCredentials=this.userObj;
-    console.log(this.type)
     if(userCredentials.username=="admin"  &&  userCredentials.password=="1234"){
       this.us.masterLoginStatus=true;
         this.router.navigateByUrl('/newadmin')
     }
+    else{
     this.us.loginUser(userCredentials).subscribe(
       res=>{
         if(res.message==="Logged in successfully"){
@@ -44,17 +44,17 @@ export class LoginComponent implements OnInit {
           //update user login status
           this.us.userLoginStatus=true;
           //navigate to userprofile page
-          this.router.navigateByUrl('/admin')
+          this.router.navigateByUrl('/home')
         }
-        else{
-          alert(res.message)
-        }
+      
       },
       err=>{
         console.log(err)
         alert("Something went wrong")
       }
+    
     )
+    }
   
 }
  

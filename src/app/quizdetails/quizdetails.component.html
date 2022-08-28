@@ -1,0 +1,33 @@
+<div class="container-fluid bg-white">
+    <h1 class="text-primary text-center">QUESTIONS</h1>
+        <div *ngFor="let que of questions index as i" id="quizcontainer">
+         <h4 id="qtext" class=""><span>{{i+1}}. </span>{{que.question}}?</h4>
+            <div class="custom-control custom-radio mb-2">
+                <input type="radio" id="selopt1" name="option{{i}}" value="{{que.option1}}" (click)="sendans(que.option1,que.qno)"  >
+                <label  for="selopt1" >{{que.option1}}</label>
+            </div>
+            <div class="custom-control custom-radio mb-2">
+                <input type="radio" id="selopt2" name="option{{i}}" value="{{que.option2}}" (click)="sendans(que.option2,que.qno)"  >
+                <label for="selopt2" >{{que.option2}}</label>
+            </div>
+            <div class="custom-control custom-radio mb-2">
+                <input type="radio" id="selopt3" name="option{{i}}" value="{{que.option3}}"  (click)="sendans(que.option3,que.qno)"  >
+                <label  for="selopt3"  >{{que.option3}}</label>
+            </div> 
+            <div class="custom-control custom-radio mb-2">
+                <input type="radio" id="selopt4" name="option{{i}}" value="{{que.option4}}" (click)="sendans(que.option4,que.qno)"  >
+                <label  for="selopt4"  >{{que.option4}}</label>
+            </div>
+
+        
+           
+        
+            
+        </div>
+        <button class="btn btn-success mx-auto" type="submit" (click)="submittest()" >Submit Test</button>
+        
+        
+</div>
+
+
+

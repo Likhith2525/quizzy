@@ -10,32 +10,67 @@ userApi.use(exp.json())
 
 
 
+userApi.post('/evaluateuser', expressErrorHandler(async (req, res, next) => {
 
+     let userObj=req.body
+     //console.log(userObj)
+    let marksCollectionObj = req.app.get("marksCollectionObj")
+   // let qobj = await marksCollectionObj.findOne({ username: userObj.username });
+    let userCartObj = await marksCollectionObj.findOne({username:userObj.username})
+
+    //console.log(userCartObj)
+    
+    //if userCartObj is not existed
+    if (userCartObj === undefined) {
+
+        //create new object
+        dict={}
+        dict[userObj.subjectname]=userObj.points;
+        let newUserCartObject = { username:userObj.username, dict }
+        //console.log(newUserCartObject)
+        //insert it
+        await marksCollectionObj.insertOne(newUserCartObject)
+
+        let latestCartObj = await marksCollectionObj.findOne({ username:userObj.username })
+        res.send({ message: "exam done / check score in leaderboard", latestCartObj: latestCartObj })
+
+    }
+    //if existed
+    else {
+       // let index = userCartObj.scores.findIndex(subjectname => rank === 7);
+        //push productObject to products array
+       // userCartObj.scores.push(dict)
+        //update document
+        userCartObj.dict[userObj.subjectname]=userObj.points
+        //console.log(userCartObj)
+        await marksCollectionObj.updateOne({ username: userObj.username }, { $set: { ...userCartObj } })
+        let latestCartObj = await marksCollectionObj.findOne({ username: userObj.username })
+        res.send({ message: "exam done  / check score in leaderboard", latestCartObj: latestCartObj })
+    }
+    
+  
+}))
 
 //adding new product
 
 userApi.post('/add-product', expressErrorHandler(async (req, res, next) => {
 
 
+    let productCollectionObject = req.app.get("questionCollectionObj")
 
-    let productCollectionObject = req.app.get("productCollectionObject")
-
-    let newProduct = JSON.parse(req.body.prodObj);
-
+    newquestion = req.body;
+    //console.log(newProduct)
     //search
-    let product = await productCollectionObject.findOne({ model: newProduct.model })
+    let qobj = await productCollectionObject.findOne({ qno: newquestion.qno });
 
-    //if proudct is existed
-    if (product !== null) {
-        res.send({ message: "Product already existed" })
+    if(qobj === undefined){
+       let qstionsObj= await productCollectionObject.insertOne(newquestion)
+       res.send({message:"new question added"})
     }
-    else {
-       
-        await productCollectionObject.insertOne(newProduct)
-        res.send({ message: "New product added" })
+    else{
+          res.send({message:"question already existed with this id"})
     }
-
-
+  
 }))
 
 
@@ -62,7 +97,31 @@ userApi.get("/getusers", expressErrorHandler(async (req, res) => {
     res.send({ message: userList })
 
 }))
+userApi.get("/getsubjects", expressErrorHandler(async (req, res) => {
+    let productCollectionObject = req.app.get("questionCollectionObj")
+    let userList = await productCollectionObject.distinct("subname")
 
+    //console.log(userList)
+    res.send({ message: userList })
+
+}))
+//get questions by subname
+userApi.get("/getquestions/:sub", expressErrorHandler(async (req, res, next) => {
+      
+    let productCollectionObject = req.app.get("questionCollectionObj")
+    //get username from url
+    let un = req.params.sub;
+    //console.log(un)
+    //search
+    let userObj= await productCollectionObject.find({subname:un}).toArray();                                                                                                                                                                                                                                       
+    //console.log(userObj)
+    if (userObj === null) {
+        res.send({ message: "question not existed" })
+    }
+    else {
+        res.send({ message: userObj })
+    }
+}))
 
 //get user by username
 userApi.get("/getuser/:username", expressErrorHandler(async (req, res, next) => {
