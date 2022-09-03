@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private us:UserService) { }
 
+  obj:any;
+  marks:any;
+  arr:[];
   ngOnInit(): void {
+    let name=localStorage.getItem("username")
+    this.us.getscorebyname(name).subscribe(
+      res=>{
+         this.obj=res.message;
+         this.marks=this.obj.dict;
+
+         //console.log(this.marks);
+
+      },
+      err=>{
+        console.log(err);
+      }
+      )
   }
 
 }

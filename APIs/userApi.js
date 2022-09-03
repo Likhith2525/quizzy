@@ -32,7 +32,7 @@ userApi.post('/evaluateuser', expressErrorHandler(async (req, res, next) => {
         await marksCollectionObj.insertOne(newUserCartObject)
 
         let latestCartObj = await marksCollectionObj.findOne({ username:userObj.username })
-        res.send({ message: "exam done / check score in leaderboard", latestCartObj: latestCartObj })
+        res.send({ message: "Exam completed Successfully", latestCartObj: latestCartObj })
 
     }
     //if existed
@@ -45,7 +45,7 @@ userApi.post('/evaluateuser', expressErrorHandler(async (req, res, next) => {
         //console.log(userCartObj)
         await marksCollectionObj.updateOne({ username: userObj.username }, { $set: { ...userCartObj } })
         let latestCartObj = await marksCollectionObj.findOne({ username: userObj.username })
-        res.send({ message: "exam done  / check score in leaderboard", latestCartObj: latestCartObj })
+        res.send({ message: "Exam completed Successfully", latestCartObj: latestCartObj })
     }
     
   
@@ -134,6 +134,24 @@ userApi.get("/getuser/:username", expressErrorHandler(async (req, res, next) => 
 
     if (userObj === null) {
         res.send({ message: "User not existed" })
+    }
+    else {
+        res.send({ message: userObj })
+    }
+}))
+
+//get scores by name
+userApi.get("/getscore/:name", expressErrorHandler(async (req, res, next) => {
+      
+    let productCollectionObject = req.app.get("marksCollectionObj")
+    //get username from url
+    let un = req.params.name;
+    //console.log(un)
+    //search
+    let userObj= await productCollectionObject.findOne({username:un});                                                                                                                                                                                                                                       
+    //console.log(userObj)
+    if (userObj === null) {
+        res.send({ message: "question not existed" })
     }
     else {
         res.send({ message: userObj })

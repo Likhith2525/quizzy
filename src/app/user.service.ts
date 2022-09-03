@@ -72,5 +72,8 @@ export class UserService {
   updatescore(ans):Observable<any>{
     return this.hc.post('/user/evaluateuser',ans)
   }
+  getscorebyname(name):Observable<any>{
+    return this.hc.get(`/user/getscore/${name}`)
+  }
 
 }

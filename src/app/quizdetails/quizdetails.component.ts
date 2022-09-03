@@ -49,8 +49,8 @@ export class QuizdetailsComponent implements OnInit {
            score=score + 1;
       }
     }
-  let  userscore={
-       subjectname:this.subject,
+  let userscore={
+      subjectname:this.subject,
       username:this.user,
       points:score
     }
