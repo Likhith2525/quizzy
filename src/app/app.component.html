@@ -14,19 +14,19 @@
           <a class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
         </li>
         <li class="nav-item" *ngIf="us.userLoginStatus">
-          <a class="nav-link" routerLink="contactus" routerLinkActive="active">Contactus</a>
-        </li>
-        <li class="nav-item" *ngIf="us.userLoginStatus || us.masterLoginStatus">
-          <a class="nav-link" routerLink="login" routerLinkActive="active" (click)="userLogout()">Logout</a>
+          <a class="nav-link" routerLink="courses" routerLinkActive="active">Course</a>
         </li>
         <li class="nav-item" *ngIf="us.userLoginStatus">
-          <a class="nav-link" routerLink="courses" routerLinkActive="active">Course</a>
+          <a class="nav-link" routerLink="quiz" routerLinkActive="active">Quiz</a>
         </li>
         <li class="nav-item" *ngIf="us.userLoginStatus">
           <a class="nav-link" routerLink="leaderboard" routerLinkActive="active">Leaderboard</a>
         </li>
         <li class="nav-item" *ngIf="us.userLoginStatus">
-          <a class="nav-link" routerLink="quiz" routerLinkActive="active">Quiz</a>
+          <a class="nav-link" routerLink="contactus" routerLinkActive="active">Contactus</a>
+        </li>
+        <li class="nav-item" *ngIf="us.userLoginStatus || us.masterLoginStatus">
+          <a class="nav-link" routerLink="login" routerLinkActive="active" (click)="userLogout()">Logout</a>
         </li>
       </ul>
     </div>
