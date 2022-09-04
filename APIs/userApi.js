@@ -97,6 +97,15 @@ userApi.get("/getusers", expressErrorHandler(async (req, res) => {
     res.send({ message: userList })
 
 }))
+
+userApi.get("/get-all-scores", expressErrorHandler(async (req, res) => {
+   
+    let marksCollectionObj = req.app.get("marksCollectionObj")
+    let scoresList = await marksCollectionObj.find().toArray()
+    res.send({ message: scoresList })
+
+}))
+
 userApi.get("/getsubjects", expressErrorHandler(async (req, res) => {
     let productCollectionObject = req.app.get("questionCollectionObj")
     let userList = await productCollectionObject.distinct("subname")

@@ -1,0 +1,29 @@
+<div class="container-fluid bg-white">
+    <div class="dropdown float-end">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Choose Subject
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let sub of subjects"  (click)="onSubSelect(sub)"><a class="dropdown-item">{{sub}}</a></li>
+        </ul>
+      </div>
+
+        <table class="table table-hover mt-3 mx-auto w-75">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Marks</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of usermarksobj; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.key}}</td>
+                <td *ngIf="item.value!=-1">{{item.value}}</td>
+                <td *ngIf="item.value==-1">Did Not Attempt</td>
+            </tr>
+            
+            </tbody>
+        </table>
+</div>

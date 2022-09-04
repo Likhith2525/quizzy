@@ -65,7 +65,6 @@ export class UserService {
   }
    //to read all products
    getsubjects():Observable<any>{
-
     return this.hc.get('/user/getsubjects')
 
 }

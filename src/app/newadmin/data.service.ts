@@ -14,4 +14,8 @@ export class DataService {
     return  this.hc.post("/user/add-product",newProduct)
     
   }
+
+  getscores():Observable<any>{
+    return this.hc.get("/user/get-all-scores")
+  }
 }
