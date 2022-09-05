@@ -1,5 +1,4 @@
 import { Component, OnInit,Inject } from '@angular/core';
-import { QuizService } from '../services/quiz.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
@@ -9,7 +8,7 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css'],
-  providers: [QuizService]
+  providers: []
 })
 export class QuizComponent implements OnInit {
   subjects:any;

@@ -3,14 +3,15 @@ const exp=require("express")
 const app=exp();
 const path=require("path")
 
+require("dotenv").config()
 //connect angular app with express server
 app.use(exp.static(path.join(__dirname,"./dist/learningapp/")))
 //import mongoclient
 const mc=require("mongodb").MongoClient;
 
 //connection string
-const databaseurl="mongodb+srv://vnr2023:vnr2023@mymongo1.v5zxf.mongodb.net/mprojectdb?retryWrites=true&w=majority"
-//const databaseurl=process.env.DATABASE_URL;
+//const databaseurl="mongodb+srv://vnr2023:vnr2023@mymongo1.v5zxf.mongodb.net/mprojectdb?retryWrites=true&w=majority"
+const databaseurl=process.env.DATABASE_URL;
 //connect to db
 mc.connect(databaseurl,{useNewUrlParser:true, useUnifiedTopology:true},(err,client)=>{
     if(err){
