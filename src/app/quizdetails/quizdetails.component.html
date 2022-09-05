@@ -1,10 +1,10 @@
 <div class="container-fluid bg-white">
     <h1 class="text-primary text-center">QUESTIONS</h1>
-        <div *ngFor="let que of questions index as i" id="quizcontainer">
+        <div *ngFor="let que of questions index as i" class="mt-2" id="quizcontainer">
          <h4 id="qtext" class=""><span>{{i+1}}. </span>{{que.question}}?</h4>
             <div class="custom-control custom-radio mb-2">
                 <input type="radio" id="selopt1" name="option{{i}}" value="{{que.option1}}" (click)="sendans(que.option1,que.qno)"  >
-                <label  for="selopt1" >{{que.option1}}</label>
+                <label for="selopt1" >{{que.option1}}</label>
             </div>
             <div class="custom-control custom-radio mb-2">
                 <input type="radio" id="selopt2" name="option{{i}}" value="{{que.option2}}" (click)="sendans(que.option2,que.qno)"  >
@@ -24,8 +24,9 @@
         
             
         </div>
-        <button class="btn btn-success mx-auto" type="submit" (click)="submittest()" >Submit Test</button>
-        
+        <div class="d-block mx-auto">
+           <button class="btn btn-success " type="submit" (click)="submittest()" (click)=closeFullscreen() >Submit Test</button>
+        </div>
         
 </div>
 

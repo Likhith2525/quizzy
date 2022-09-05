@@ -8,7 +8,6 @@ app.use(exp.static(path.join(__dirname,"./dist/learningapp/")))
 //import mongoclient
 const mc=require("mongodb").MongoClient;
 
-
 //connection string
 const databaseurl="mongodb+srv://vnr2023:vnr2023@mymongo1.v5zxf.mongodb.net/mprojectdb?retryWrites=true&w=majority"
 //const databaseurl=process.env.DATABASE_URL;

@@ -1,15 +1,18 @@
 <div class="container">
-  <h1 class="text-info text-center" >SUBJECTS</h1>
+  <h1 class="text-info text-center mt-3" >SUBJECTS</h1>
   <div class="row row-cols-s-1 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 m-3">
       <div class="col m-3" *ngFor="let m of subjects">
-        <div class="card " style="width: 18rem;">
+        <div class="card" style="width: 18rem;">
           <!-- <img src="..." class="card-img-top" alt="..."> -->
           <div class="card-body">
-            <h5 class="card-title">{{m}}</h5>
+            <h2 class="card-title text-center text-danger text-uppercase">{{m}}</h2>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary" routerLink="{{m}}">Take Test</a>
+            <a href="#" class="btn btn-primary d-block mx-auto" routerLink="{{m}}" (click)="openFullscreen()">Take Test</a>
           </div>
         </div>
       </div>   
   </div>
+  <div>
+  </div>
 </div>
+

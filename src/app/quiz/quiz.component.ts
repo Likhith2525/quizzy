@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { QuizService } from '../services/quiz.service';
-import { HelperService } from '../services/helper.service';
-import { Option, Question, Quiz, QuizConfig } from '../models/index';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'app-quiz',
@@ -13,8 +13,12 @@ import { Router } from '@angular/router';
 })
 export class QuizComponent implements OnInit {
   subjects:any;
-  constructor(private us:UserService,private ar:Router){}
+  elem:any;
+
+  constructor(private us:UserService,private ar:Router,@Inject(DOCUMENT) private document: any){}
+
    ngOnInit(): void {
+     this.elem = document.documentElement;
      this.us.getsubjects().subscribe(
       res=>{
            this.subjects=res.message;
@@ -25,6 +29,36 @@ export class QuizComponent implements OnInit {
       }
      )
    }
+   openFullscreen() {
+    if (this.elem.requestFullscreen) {
+      this.elem.requestFullscreen();
+    } else if (this.elem.mozRequestFullScreen) {
+      /* Firefox */
+      this.elem.mozRequestFullScreen();
+    } else if (this.elem.webkitRequestFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.elem.webkitRequestFullscreen();
+    } else if (this.elem.msRequestFullscreen) {
+      /* IE/Edge */
+      this.elem.msRequestFullscreen();
+    }
+  }
+
+  /* Close fullscreen */
+  closeFullscreen() {
+    if (document.exitFullscreen) {
+      this.document.exitFullscreen();
+    } else if (this.document.mozCancelFullScreen) {
+      /* Firefox */
+      this.document.mozCancelFullScreen();
+    } else if (this.document.webkitExitFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.document.webkitExitFullscreen();
+    } else if (this.document.msExitFullscreen) {
+      /* IE/Edge */
+      this.document.msExitFullscreen();
+    }
+  }
 
   
 }

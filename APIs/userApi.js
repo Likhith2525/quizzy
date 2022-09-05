@@ -47,6 +47,7 @@ userApi.post('/evaluateuser', expressErrorHandler(async (req, res, next) => {
         let latestCartObj = await marksCollectionObj.findOne({ username: userObj.username })
         res.send({ message: "Exam completed Successfully", latestCartObj: latestCartObj })
     }
+
     
   
 }))

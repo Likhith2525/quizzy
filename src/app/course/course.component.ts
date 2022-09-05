@@ -29,7 +29,9 @@ export class CourseComponent implements OnInit {
       )
     }
 
-    onClick(){
-      this.router.navigateByUrl('/coursedetails')
+    onClick(id:any){
+      this.userService.sendcourseid(id);
+      this.router.navigateByUrl('/coursedetails');
+
     }
 }

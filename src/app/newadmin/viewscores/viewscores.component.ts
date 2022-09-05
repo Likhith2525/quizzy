@@ -15,6 +15,7 @@ export class ViewscoresComponent implements OnInit {
   marksobj:any;
   marksbyuser:any;
   un:any;
+  selected_sub:any;
   constructor(private us:UserService,private ds:DataService) { }
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class ViewscoresComponent implements OnInit {
   }
   onSubSelect(item){
     //console.log(item);
+    this.selected_sub=item;
     this.usermarksobj=[]
     
     this.ds.getscores().subscribe(

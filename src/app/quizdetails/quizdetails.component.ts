@@ -1,5 +1,6 @@
+import { DOCUMENT } from '@angular/common';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { UserService } from '../user.service';
@@ -9,14 +10,15 @@ import { UserService } from '../user.service';
   styleUrls: ['./quizdetails.component.css']
 })
 export class QuizdetailsComponent implements OnInit {
-
-  constructor(private us:UserService,private ar:ActivatedRoute,private router:Router){
+  elem:any;
+  constructor(private us:UserService,private ar:ActivatedRoute,private router:Router,@Inject(DOCUMENT) private document: any){
     
   }
   questions:any;
   user:any;
-   subject:any;
-  ngOnInit(): void {
+  subject:any;
+  
+   ngOnInit(): void {
     let name=localStorage.getItem("username")
     this.user=name
     var url=this.ar.snapshot.params.m
@@ -25,7 +27,7 @@ export class QuizdetailsComponent implements OnInit {
     this.us.getqstionsbyname(url).subscribe(
       res=>{
          this.questions=res.message;
-         console.log(this.questions)
+         //console.log(this.questions);
       },
       err=>{
         console.log(err);
@@ -33,11 +35,11 @@ export class QuizdetailsComponent implements OnInit {
       )
   }
 
-   dict={}
+  dict={}
   sendans(opt:any,no:any){
      
     this.dict[no]=opt;
-    console.log(this.dict)
+    //console.log(this.dict)
   }
   
   submittest(){
@@ -46,13 +48,13 @@ export class QuizdetailsComponent implements OnInit {
       let j=this.questions[i].qno;
     
       if(this.dict[j] === this.questions[i].correctoption){
-           score=score + 1;
+           score=score+1;
       }
     }
   let userscore={
       subjectname:this.subject,
       username:this.user,
-      points:score
+      points:score,
     }
     this.us.updatescore(userscore).subscribe(
           res=>{
@@ -62,5 +64,24 @@ export class QuizdetailsComponent implements OnInit {
     )
   }
 
+
+
+  /* Close fullscreen */
+  closeFullscreen() {
+    if (document.exitFullscreen) {
+      this.document.exitFullscreen();
+    } else if (this.document.mozCancelFullScreen) {
+      /* Firefox */
+      this.document.mozCancelFullScreen();
+    } else if (this.document.webkitExitFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.document.webkitExitFullscreen();
+    } else if (this.document.msExitFullscreen) {
+      /* IE/Edge */
+      this.document.msExitFullscreen();
+    }
     
+}
+
+
 }

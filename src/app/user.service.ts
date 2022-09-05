@@ -14,6 +14,10 @@ export class UserService {
        this.dataSource.next(data)
     }
 
+
+    private approvalStageMessage = new BehaviorSubject('');
+    currentApprovalStageMessage = this.approvalStageMessage.asObservable();
+
   //inject http client object
   constructor(private hc:HttpClient) { 
     if(localStorage.getItem('username')!==null){
@@ -74,5 +78,10 @@ export class UserService {
   getscorebyname(name):Observable<any>{
     return this.hc.get(`/user/getscore/${name}`)
   }
+
+
+  sendcourseid(message: string) {
+    this.approvalStageMessage.next(message)
+    }
 
 }

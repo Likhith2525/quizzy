@@ -18,7 +18,9 @@ export class LeaderboardComponent implements OnInit {
     this.us.getscorebyname(name).subscribe(
       res=>{
          this.obj=res.message;
+         //console.log(this.obj);
          this.marks=this.obj.dict;
+
 
          //console.log(this.marks);
 

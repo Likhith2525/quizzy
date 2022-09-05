@@ -1,3 +1,39 @@
 .container-fluid{
-    min-height: 1000vh;
+    min-height: 500vh;
 }
+label{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration:solid;
+    padding-left: 5px;
+}
+#qtext{
+    font-style: oblique;
+    font-weight: var(Geneva);
+
+}
+input[type="radio"] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+    margin-left: 10px;
+    margin-right: 5px;
+  }
+
+
+
+.custom-radio {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 22px;
+  }
+
+
+.custom-radio:hover{
+    background-color: #ccc;
+ } 
+
+ .custom-radio input {
+    background-color: #2196F3;
+    font-size: larger;
+  }

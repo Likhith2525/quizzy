@@ -4,10 +4,10 @@
           Choose Subject
         </button>
         <ul class="dropdown-menu">
-          <li *ngFor="let sub of subjects"  (click)="onSubSelect(sub)"><a class="dropdown-item">{{sub}}</a></li>
+          <li *ngFor="let sub of subjects" selected (click)="onSubSelect(sub)"><button class="dropdown-item " >{{sub}}</button></li>
         </ul>
       </div>
-
+        <h2 class="text-secondary text-center">{{selected_sub}}</h2>
         <table class="table table-hover mt-3 mx-auto w-75">
             <thead class="thead-light">
             <tr>
