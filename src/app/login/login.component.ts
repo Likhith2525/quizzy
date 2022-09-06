@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit {
           //navigate to userprofile page
           this.router.navigateByUrl('/home')
         }
+        else{
+          alert("Incorrect Password");
+        }
       
       },
       err=>{

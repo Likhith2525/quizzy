@@ -21,10 +21,10 @@ userApi.post('/evaluateuser', expressErrorHandler(async (req, res, next) => {
     //console.log(userCartObj)
     
     //if userCartObj is not existed
-    if (userCartObj === undefined) {
+    if (userCartObj === null) {
 
         //create new object
-        dict={}
+        dict={ }
         dict[userObj.subjectname]=userObj.points;
         let newUserCartObject = { username:userObj.username, dict }
         //console.log(newUserCartObject)
@@ -210,6 +210,7 @@ userApi.post('/login', expressErrorHandler(async (req, res) => {
     let credentials = req.body;
     //search user by username
     let user = await userCollectionObj.findOne({ username: credentials.username })
+    //console.log(user)
     //if user not found
     if (user === null) {
         res.send({ message: "invalid username" })
@@ -218,6 +219,7 @@ userApi.post('/login', expressErrorHandler(async (req, res) => {
         //compare the password
         let result = await bcryptjs.compare(credentials.password, user.password)
         //if not matched
+        //console.log(result)
         if (result === false) {
             res.send({ message: "Invalid password" })
         }
