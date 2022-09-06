@@ -43,7 +43,7 @@ const userapi=require("./APIs/userapi")
 app.use('/user',userapi)
 
 app.get('*',(req,res) =>{
-    res.sendFile(path.join(__dirname,'./dist/learningapp/index.html'), function(err){
+    res.sendFile(path.join(__dirname,'dist/learningapp/index.html'), function(err){
         if(err){
             res.status(500).send(err)
         }
