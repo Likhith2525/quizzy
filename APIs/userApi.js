@@ -8,7 +8,7 @@ const bcryptjs=require("bcryptjs")
 userApi.use(exp.json())
 
 
-
+require("dotenv").config()
 
 userApi.post('/evaluateuser', expressErrorHandler(async (req, res, next) => {
 

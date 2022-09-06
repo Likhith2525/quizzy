@@ -20,6 +20,7 @@
     "@angular/router": "~12.1.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.0",
+    "dotenv": "^16.0.2",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "font-awesome": "^4.7.0",
@@ -44,8 +45,8 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.3.2"
   },
-  "engines" : { 
-    "npm" : "8.5.4",
-    "node" : "16.14.0"
+  "engines": {
+    "npm": "8.5.4",
+    "node": "16.14.0"
   }
 }
