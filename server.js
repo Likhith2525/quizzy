@@ -42,8 +42,8 @@ const userapi=require("./APIs/userapi")
 //execure specific api based on path
 app.use('/user',userapi)
 
-app.get('/*',(req,res) =>{
-    res.sendFile(path.join(__dirname,'dist/learningapp/index.html'), function(err){
+app.get('*',(req,res) =>{
+    res.sendFile(path.join(__dirname,'./dist/learningapp/index.html'), function(err){
         if(err){
             res.status(500).send(err)
         }
@@ -65,6 +65,8 @@ app.use((req,res,next)=>{
 
 //assign port
 //const port=process.env.PORT||8080;
-app.listen(process.env.PORT || 8080, function(){
-    console.log("server is listening on port ");
-  });
+
+
+//assign port
+const port=process.env.PORT || 8080;
+app.listen(port,()=>console.log(`server is listening on port ${port}`))
