@@ -223,7 +223,7 @@ userApi.post('/login', expressErrorHandler(async (req, res) => {
         }
         else {
             //create a token
-            let signedToken = jwt.sign({ username: credentials.username },'feefrefrf',{ expiresIn: 10 })
+            let signedToken = jwt.sign({ username: credentials.username },process.env.SECRET,{ expiresIn: 10 })
             //send token to client
             res.send({ message: "Logged in successfully", token: signedToken, username: credentials.username, userObj: user })
         }
