@@ -44,7 +44,7 @@ const userapi=require("./APIs/userapi")
 //execure specific api based on path
 app.use('/user',userapi)
 
-app.get('*',(req,res) =>{
+app.get('/*',(req,res) =>{
     res.sendFile(path.join(__dirname,'dist/learningapp/index.html'), function(err){
         if(err){
             res.status(500).send(err)
