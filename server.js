@@ -6,7 +6,7 @@ const path=require("path")
 
 require("dotenv").config()
 //connect angular app with express server
-app.use(exp.static(path.join(__dirname,"./dist/learningapp/")))
+app.use(exp.static(path.join(__dirname,'./dist/learningapp/')))
 //import mongoclient
 const mc=require("mongodb").MongoClient;
 
@@ -34,8 +34,6 @@ mc.connect(databaseurl,{useNewUrlParser:true, useUnifiedTopology:true},(err,clie
 })
 
 
-//connect angular app with express server
-app.use(exp.static(path.join(__dirname,"./dist/learningapp/")))
 
 
 //import APIs
@@ -44,7 +42,7 @@ const userapi=require("./APIs/userapi")
 //execure specific api based on path
 app.use('/user',userapi)
 
-app.get('/*',(req,res) =>{
+app.get('*',(req,res) =>{
     res.sendFile(path.join(__dirname,'dist/learningapp/index.html'), function(err){
         if(err){
             res.status(500).send(err)
