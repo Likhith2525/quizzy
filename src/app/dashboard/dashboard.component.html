@@ -1,0 +1,22 @@
+<h4 class="text-end ">Welcome, <span id="name">{{username}}</span>
+</h4>
+
+<div class="container bg-white">
+    <table class="table table-hover mt-3 mx-auto w-75">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Subject </th>
+            <th scope="col">Marks</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of marks|keyvalue; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.key}}</td>
+            <td>{{item.value}}/5</td>
+        </tr>
+        
+        </tbody>
+    </table>
+</div>

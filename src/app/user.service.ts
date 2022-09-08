@@ -68,7 +68,7 @@ export class UserService {
     return this.hc.get(`/user/getquestions/${sub}`)
   }
    //to read all products
-   getsubjects():Observable<any>{
+  getsubjects():Observable<any>{
     return this.hc.get('/user/getsubjects')
 
 }
@@ -80,8 +80,10 @@ export class UserService {
   }
 
 
-  sendcourseid(message: string) {
+    sendcourseid(message: string) {
     this.approvalStageMessage.next(message)
     }
+
+   
 
 }

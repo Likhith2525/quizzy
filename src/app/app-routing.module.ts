@@ -7,7 +7,7 @@ import { CoursedetailsComponent } from './coursedetails/coursedetails.component'
 import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { LoginComponent } from './login/login.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizdetailsComponent } from './quizdetails/quizdetails.component';
 import { SignupComponent } from './signup/signup.component';
@@ -21,6 +21,7 @@ const routes: Routes = [
   {path:'contactus',component:ContactusComponent},
   {path:'quiz',component:QuizComponent},
   {path:'quiz/:m',component:QuizdetailsComponent},
+  {path:'dashboard',component:DashboardComponent},
   {path:'leaderboard',component:LeaderboardComponent},
   {path:'courses',component:CourseComponent},
   {path:'coursedetails',component:CoursedetailsComponent},

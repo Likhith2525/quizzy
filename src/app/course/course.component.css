@@ -1,10 +1,32 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,600,600italic,700,700italic);
 
-*{
+ *{
     margin: 0;
     padding: 0;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+  }
+
+  
+  .btn {
+    /*background-image:linear-gradient(to right, #E040FB, #00BCD4);*/
+    background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
+    margin: 10px;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 25px;
   }
 
   p{
@@ -16,7 +38,6 @@
     font-weight: normal;
     color: rgb(18, 25, 29);
     text-align: center;
-    /*margin: 2rem 0;*/
   }
   
   .wrapper{
@@ -72,9 +93,6 @@
   
   .back{
     background: #cedce7;
-    background: -webkit-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
-    background: -o-linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
-    background: linear-gradient(45deg,  #cedce7 0%,#596a72 100%);
   }
   
   .front:after{
@@ -115,7 +133,6 @@
       position: absolute;
       left: 0;
       width: 100%;
-      /*padding: 2rem;*/
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
       outline: 1px solid transparent;
@@ -150,48 +167,4 @@
             transform: rotateY(-180deg);
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
-  }
-  
-  .front .inner p{
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    position: relative;
-  }
-  
-  .front .inner p:after{
-    content: '';
-    width: 4rem;
-    height: 2px;
-    position: absolute;
-    background: #C6D4DF;
-    display: block;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    bottom: -.75rem;
-  }
-  
-  .front .inner span{
-    color: rgba(255,255,255,0.7);
-    font-family: 'Montserrat';
-    font-weight: 300;
-  }
-  
-  @media screen and (max-width: 64rem){
-    .col{
-      width: calc(33.333333% - 2rem);
-    }
-  }
-  
-  @media screen and (max-width: 48rem){
-    .col{
-      width: calc(50% - 2rem);
-    }
-  }
-  
-  @media screen and (max-width: 32rem){
-    .col{
-      width: 100%;
-      margin: 0 0 2rem 0;
-    }
   }

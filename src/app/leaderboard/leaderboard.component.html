@@ -1,19 +1,31 @@
-<div class="container bg-white">
-    <table class="table table-hover mt-3 mx-auto w-75">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Subject </th>
-            <th scope="col">Marks</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let item of marks|keyvalue; index as i">
-            <th scope="row">{{i+1}}</th>
-            <td>{{item.key}}</td>
-            <td>{{item.value}}</td>
-        </tr>
-        
-        </tbody>
-    </table>
+<div class="container-fluid bg-white">
+    <div class="dropdown float-end">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Choose Subject
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let sub of subjects" selected (click)="onSubSelect(sub)"><button class="dropdown-item " >{{sub}}</button></li>
+        </ul>
+      </div>
+        <h2 class="text-secondary text-center">{{selected_sub}}</h2>
+        <table class="table table-hover mt-3 mx-auto w-75">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Marks</th>
+            </tr>
+            </thead>
+            
+            <tbody>
+            <tr *ngFor="let item of usermarksobj; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td *ngIf="username!=item.key" >{{item.key}}</td>
+                <td id="glow" *ngIf="username==item.key">{{item.key}}</td>
+                <td *ngIf="item.value!=-1">{{item.value}}/5</td>
+                <td *ngIf="item.value==-1">Did Not Attempt</td>
+            </tr>
+            
+            </tbody>
+        </table>
 </div>

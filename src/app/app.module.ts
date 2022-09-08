@@ -18,6 +18,7 @@ import { QuizdetailsComponent } from './quizdetails/quizdetails.component';
 import { MasterComponent } from './master/master.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { LoadingComponent } from './loading/loading.component';
     QuizdetailsComponent,
     MasterComponent,
     LeaderboardComponent,
-    LoadingComponent
+    LoadingComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

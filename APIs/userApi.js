@@ -4,75 +4,14 @@ const userApi = exp.Router();
 const jwt=require("jsonwebtoken")
 const expressErrorHandler = require("express-async-handler")
 const bcryptjs=require("bcryptjs")
+
+
 //body parsing middlleware
 userApi.use(exp.json())
 
 
 require("dotenv").config()
 
-userApi.post('/evaluateuser', expressErrorHandler(async (req, res, next) => {
-
-     let userObj=req.body
-     //console.log(userObj)
-    let marksCollectionObj = req.app.get("marksCollectionObj")
-   // let qobj = await marksCollectionObj.findOne({ username: userObj.username });
-    let userCartObj = await marksCollectionObj.findOne({username:userObj.username})
-
-    //console.log(userCartObj)
-    
-    //if userCartObj is not existed
-    if (userCartObj === null) {
-
-        //create new object
-        dict={ }
-        dict[userObj.subjectname]=userObj.points;
-        let newUserCartObject = { username:userObj.username, dict }
-        //console.log(newUserCartObject)
-        //insert it
-        await marksCollectionObj.insertOne(newUserCartObject)
-
-        let latestCartObj = await marksCollectionObj.findOne({ username:userObj.username })
-        res.send({ message: "Exam completed Successfully", latestCartObj: latestCartObj })
-
-    }
-    //if existed
-    else {
-       // let index = userCartObj.scores.findIndex(subjectname => rank === 7);
-        //push productObject to products array
-       // userCartObj.scores.push(dict)
-        //update document
-        userCartObj.dict[userObj.subjectname]=userObj.points
-        //console.log(userCartObj)
-        await marksCollectionObj.updateOne({ username: userObj.username }, { $set: { ...userCartObj } })
-        let latestCartObj = await marksCollectionObj.findOne({ username: userObj.username })
-        res.send({ message: "Exam completed Successfully", latestCartObj: latestCartObj })
-    }
-
-    
-  
-}))
-
-//adding new product
-
-userApi.post('/add-product', expressErrorHandler(async (req, res, next) => {
-
-
-    let productCollectionObject = req.app.get("questionCollectionObj")
-
-    newquestion = req.body;
-    //console.log(newProduct)
-    //search
-    let qobj = await productCollectionObject.findOne({ qno: newquestion.qno });
-
-    if(qobj === undefined){
-       let qstionsObj= await productCollectionObject.insertOne(newquestion)
-       res.send({message:"new question added"})
-    }
-    else{
-          res.send({message:"question already existed with this id"})
-    }
-  
-}))
 
 
 //to read all products
@@ -235,7 +174,68 @@ userApi.post('/login', expressErrorHandler(async (req, res) => {
 }))  
 
 
+userApi.post('/evaluateuser', expressErrorHandler(async (req, res, next) => {
 
+    let userObj=req.body
+    //console.log(userObj)
+   let marksCollectionObj = req.app.get("marksCollectionObj")
+  // let qobj = await marksCollectionObj.findOne({ username: userObj.username });
+   let userCartObj = await marksCollectionObj.findOne({username:userObj.username})
+
+   //console.log(userCartObj)
+   
+   //if userCartObj is not existed
+   if (userCartObj === null) {
+
+       //create new object
+       dict={ }
+       dict[userObj.subjectname]=userObj.points;
+       let newUserCartObject = { username:userObj.username, dict }
+       //console.log(newUserCartObject)
+       //insert it
+       await marksCollectionObj.insertOne(newUserCartObject)
+
+       let latestCartObj = await marksCollectionObj.findOne({ username:userObj.username })
+       res.send({ message: "Exam completed Successfully", latestCartObj: latestCartObj })
+
+   }
+   //if existed
+   else {
+      // let index = userCartObj.scores.findIndex(subjectname => rank === 7);
+       //push productObject to products array
+      // userCartObj.scores.push(dict)
+       //update document
+       userCartObj.dict[userObj.subjectname]=userObj.points
+       //console.log(userCartObj)
+       await marksCollectionObj.updateOne({ username: userObj.username }, { $set: { ...userCartObj } })
+       let latestCartObj = await marksCollectionObj.findOne({ username: userObj.username })
+       res.send({ message: "Exam completed Successfully", latestCartObj: latestCartObj })
+   }
+
+   
+ 
+}))
+
+//adding new product
+userApi.post('/add-product', expressErrorHandler(async (req, res, next) => {
+
+
+   let productCollectionObject = req.app.get("questionCollectionObj")
+
+   newquestion = req.body;
+   //console.log(productCollectionObject);
+   //search
+   let qobj = await productCollectionObject.findOne({ qno: newquestion.qno });
+
+   if(qobj === null){
+      let qstionsObj= await productCollectionObject.insertOne(newquestion)
+      res.send({message:"new question added"})
+   }
+   else{
+         res.send({message:"question already existed with this id"})
+   }
+ 
+}))
 
 
 

@@ -59,7 +59,7 @@ export class QuizdetailsComponent implements OnInit {
     this.us.updatescore(userscore).subscribe(
           res=>{
               alert(res.message)
-              this.router.navigateByUrl('/leaderboard')
+              this.router.navigateByUrl('/dashboard')
           }
     )
   }
