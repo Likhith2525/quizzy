@@ -1,9 +1,9 @@
- {
+{
   "name": "learningapp",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,7 +19,7 @@
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
     "bcryptjs": "^2.4.3",
-    "bootstrap": "^5.2.0",
+    "bootstrap": "^5.2.1",
     "dotenv": "^16.0.2",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
