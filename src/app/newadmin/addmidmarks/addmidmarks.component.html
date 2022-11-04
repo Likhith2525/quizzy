@@ -1,0 +1,28 @@
+<form #ref="ngForm" (ngSubmit)="onAddmarks(ref.value)">
+    <div class="align-items-center">
+    <div class="form-floating mb-3 col-6">
+        <input type="text" class="form-control" id="rollno" placeholder="name@example.com" name="rollno"
+            ngModel>
+        <label for="rollno">Roll No </label>
+    </div>
+    <div class="form-floating mb-3 col-6">
+        <input type="text" class="form-control" id="subname" placeholder="name@example.com" name="subname"
+            ngModel>
+        <label for="subnamNamee">Subject Name</label>
+    </div>
+    <div class="form-check form-check-inline mb-3">
+        <input class="form-check-input" type="radio" name="midoption" id="mid1" value="option1" ngModel>
+        <label class="form-check-label text-white" for="mid1">Mid-1</label>
+      </div>
+      <div class="form-check form-check-inline mb-3">
+        <input class="form-check-input" type="radio" name="midoption" id="mid2" value="option2" ngModel>
+        <label class="form-check-label text-white" for="mid2">Mid-2</label>
+      </div>
+      <div class="form-floating mb-3 col-6">
+        <input type="number" class="form-control" id="marks" placeholder="name@example.com" name="marks"
+            ngModel>
+        <label for="marks">Marks(Out of 30)</label>
+    </div>
+    <button class="btn btn-success" type="submit">Add Marks</button>
+</div>
+</form>

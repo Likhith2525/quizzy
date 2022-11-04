@@ -237,6 +237,49 @@ userApi.post('/add-product', expressErrorHandler(async (req, res, next) => {
  
 }))
 
+userApi.post('/add-mid1marks',expressErrorHandler(async (req,res,next)=>{
+    let mid1marksCollectionObj=req.app.get("mid1marksCollectionObj")
+    m1details=req.body;
+    console.log(m1details)
+    let m1marks=await mid1marksCollectionObj.findOne({$and : [{rollno: m1details.rollno },{subname:  m1details.subname}]})
+    console.log(m1marks)
+    if(m1marks === null){
+            let markObj=await mid1marksCollectionObj.insertOne(m1details)
+            res.send({message:"Mid-1 marks added"})
+    }
+    else{
+        if(m1marks.subname === null){
+            let markObj=await mid1marksCollectionObj.insertOne(m1details)
+            res.send({message:"Mid-1 marks added"})
+        }
+        else{
+            let updateobj=await mid1marksCollectionObj.updateOne({subname : m1marks.subname},{$set:{marks:m1details.marks}})
+            res.send({message:"Mid-1 marks updated successfully"})
+        }
+    }
+}))
+
+userApi.post('/add-mid2marks',expressErrorHandler(async (req,res,next)=>{
+    let mid2marksCollectionObj=req.app.get("mid2marksCollectionObj")
+    m2details=req.body;
+    //console.log(m1details)
+    let m2marks=await mid2marksCollectionObj.findOne({$and : [{rollno: m2details.rollno },{subname:  m2details.subname}]})
+    //console.log(m2marks)
+    if(m2marks === null){
+            let markObj=await mid2marksCollectionObj.insertOne(m2details)
+            res.send({message:"Mid-2 marks added"})
+    }
+    else{
+        if(m2marks.subname === null){
+            let markObj=await mid2marksCollectionObj.insertOne(m2details)
+            res.send({message:"Mid-2 marks added"})
+        }
+        else{
+            let updateobj=await mid2marksCollectionObj.updateOne({subname : m2marks.subname},{$set:{marks:m2details.marks}})
+            res.send({message:"Mid-2 marks updated successfully"})
+        }
+    }
+}))
 
 
 

@@ -25,10 +25,13 @@ mc.connect(databaseurl,{useNewUrlParser:true, useUnifiedTopology:true},(err,clie
         let userCollectionObj=databaseObj.collection("usercollection")
         let questionCollectionObj=databaseObj.collection("questioncollection")
         let marksCollectionObj=databaseObj.collection("markscollection")
+        let mid1marksCollectionObj=databaseObj.collection("mid1markscollection")
+        let mid2marksCollectionObj=databaseObj.collection("mid2markscollection")
         app.set("userCollectionObj", userCollectionObj)
         app.set("marksCollectionObj", marksCollectionObj)
         app.set("questionCollectionObj", questionCollectionObj)
-
+        app.set("mid1marksCollectionObj",mid1marksCollectionObj)
+        app.set("mid2marksCollectionObj",mid2marksCollectionObj)
       
     }
 })
